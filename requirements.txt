@@ -1,0 +1,13 @@
+joblib==1.3.2
+numpy==1.25.2
+pandas==2.0.3
+-e git+https://github.com/moves-rwth/pycarl.git@fcee9162a3428e8bc874e9cbff46f5ff32ccc886#egg=pycarl
+python-dateutil==2.8.2
+pytz==2023.3
+scikit-learn==1.3.0
+scipy==1.11.1
+six==1.16.0
+# Editable install with no version control (stormpy==1.7.0)
+-e /opt/stormpy/lib
+threadpoolctl==3.2.0
+tzdata==2023.3
