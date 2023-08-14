@@ -1,0 +1,29 @@
+mdp
+
+
+
+module drone_enviroment
+	h: [0..3] init 0;
+    speed: [0..5] init 0;
+    energy: [0..10] init 10;
+    status: bool init false;
+
+    //actions with transitions for state h=0
+    [up] h = 0 -> 0.4 : (h'=h+1) & (energy'=max(energy-1,0)) & (speed'=min(5,speed+1)) & (status'=true) + 0.6 : (h'=h) & (energy'=max(energy-1,0))  & (speed'=min(5,speed+1)) & (status'=true);
+    [down] h = 0 -> 1 : (h'=h) & (energy'=max(energy-1,0))  & (speed'=max(0,speed-1)) & (status'=false);
+
+    //actions with transitions for state h=1
+    [up] h = 1 -> 0.2 : (h'=h+1) & (energy'=max(energy-1,0)) + 0.8 : (h'=h) & (energy'=max(energy-1,0))  & (speed'=min(5,speed+1));
+    [down] h = 1 -> 1 : (h'=h-1) & (energy'=max(energy-1,0)) & (speed'=max(0,speed-1));
+
+    //actions with transitions for state  h=2
+    [up] h = 2 -> 0.5 : (h'=h+1) & (energy'=max(energy-1,0)) + 0.5 : (h'=h) & (energy'=max(energy-1,0))  & (speed'=min(5,speed+1));
+    [down] h = 2 -> 1 : (h'=h-1) & (energy'=max(energy-1,0)) & (speed'=max(0,speed-1));
+
+    //actions with transitions for state  h=3
+    [up] h = 3 -> 1 : (h'=h) & (energy'=max(energy-1,0))  & (speed'=min(5,speed+1));
+    [down] h = 3 -> 0.5 : (h'=h-1) + 0.5 : (h'=h) & (energy'=max(energy-1,0))  & (speed'=max(0,speed-1));
+endmodule
+
+
+

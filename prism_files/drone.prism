@@ -1,0 +1,26 @@
+mdp
+
+
+
+module drone_enviroment
+	h: [0..3] init 0;
+
+    //actions with transitions for state h=0
+    [up] h = 0 -> 0.4 : (h'=h+1) + 0.6 : (h'=h);
+    [down] h = 0 -> 1 : (h'=h);
+
+    //actions with transitions for state h=1
+    [up] h = 1 -> 0.2 : (h'=h+1) + 0.8 : (h'=h);
+    [down] h = 1 -> 1 : (h'=h-1);
+
+    //actions with transitions for state  h=2
+    [up] h = 2 -> 0.5 : (h'=h+1) + 0.5 : (h'=h);
+    [down] h = 2 -> 1 : (h'=h-1);
+
+    //actions with transitions for state  h=3
+    [up] h = 3 -> 1 : (h'=h);
+    [down] h = 3 -> 0.5 : (h'=h-1) + 0.5 : (h'=h);
+endmodule
+
+
+
